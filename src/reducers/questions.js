@@ -1,11 +1,11 @@
-import {RECEIVE_USERS} from '../actions/users'
+import {RECEIVE_QUESTIONS} from '../actions/questions'
 
-export default function users (state = {}, action){
+export default function questions (state = {}, action){
   switch(action.type){
-    case RECEIVE_USERS:
+    case RECEIVE_QUESTIONS:
       return {
         ...state,
-        ...action.users
+        ...action.questions
       }
     default:
       return state
