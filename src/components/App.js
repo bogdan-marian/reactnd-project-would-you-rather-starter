@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import Dashboard from './Dassboard'
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap'
+import QuestionNavigation from './QuestionNavigation'
+import QuestionPreviewContainer from './QuestionPreviewContainer'
+import QuestionNavbar from './QuestionNavbar'
 
 class App extends Component {
   componentDidMount() {
@@ -14,21 +16,13 @@ class App extends Component {
 
 
       <Container >
-        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
-          <Navbar.Brand href="/">Would-You-Rather</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto"></Nav>
-            <Nav>
-              <Nav.Link href="/login">login</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        
+        <QuestionNavbar/>
+        <QuestionNavigation/>
+
         <div>
           {this.props.loading === true
             ? null
-            : <Dashboard />
+            : <QuestionPreviewContainer />
           }
         </div>
       </Container>
