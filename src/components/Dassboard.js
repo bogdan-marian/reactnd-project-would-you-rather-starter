@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import QuestionNavigation from './QuestionNavigation'
+import QuestionPreview from './QuestionPreview'
 
 class Dashboard extends Component{
   render (){
     console.log(this.props)
-    return (
-      <div>
+    {/* <div>
         <ul>
           {this.props.questionIds.map((id) => (
             <li key={id}>
@@ -13,6 +14,14 @@ class Dashboard extends Component{
             </li>
           ))}
         </ul>
+      </div>*/}
+    return (
+      <div>
+      <QuestionNavigation/>
+    
+      <li key={id}>
+        <QuestionPreview id={id}/>
+      </li>
       </div>
     )
   }
