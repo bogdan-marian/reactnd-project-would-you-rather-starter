@@ -10,11 +10,11 @@ class QuestionPreviewContainer extends Component {
     return (
       <div>
         QuestionPreviewContainer
-        <ul>
+
           {this.props.questionIds.map((id) => (
-            <li><QuestionPreview/></li>
+            <QuestionPreview/>
           ))}
-        </ul>
+        
       </div>
     )
   }
