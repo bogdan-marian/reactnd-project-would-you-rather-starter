@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    avatarURL: "https://gravatar.com/avatar/c9ae401d7f2ec38d6652c9559586fb24?s=400&d=robohash&r=x",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
