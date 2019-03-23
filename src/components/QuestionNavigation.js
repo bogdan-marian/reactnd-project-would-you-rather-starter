@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap'
+import {  Nav } from 'react-bootstrap'
 
 class QuestionNavigation extends Component {
   render() {

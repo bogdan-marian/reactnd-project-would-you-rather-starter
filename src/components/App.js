@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import QuestionNavigation from "./QuestionNavigation";
 import QuestionPreviewContainer from "./QuestionPreviewContainer";
 import QuestionNavbar from "./QuestionNavbar";

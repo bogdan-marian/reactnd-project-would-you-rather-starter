@@ -1,3 +1,7 @@
-.classtest {
+.questionWidth {
     max-width: 500px;
+}
+
+.avatarWidth{
+    max-width: 150px;
 }
