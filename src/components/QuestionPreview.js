@@ -1,32 +1,52 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 import { Row, Col, Image, Container } from "react-bootstrap";
 import styles from "./Question.module.css";
-import {formatQuestion} from '../utils/helpers'
+import { formatQuestion } from '../utils/helpers'
 var placeholder = require("../images/paceholder.svg");
 
 class QuestionPreview extends Component {
   render() {
-    console.log(this.props)
+    const { question } = this.props
+    if (question === null) {
+      return <p> This question doesn't exist</p>
+    }
+    const { name, id, avatar, optionOne, optionTwo } = question
+
+    console.log('avatar' + avatar)
     return (
+
       <Container className={styles.questionWidth}>
-        <Row>Name Sirname askes:</Row>
+        <Row />
+        <Row className={styles.nameStile}>{name} askes:</Row>
         <Row className="justify-content-md-center">
-          <Col >
-            <Image src={placeholder} roundedCircle className={styles.avatarWidth}/>
+          <Col md="auto">
+            <Image
+              src={avatar}
+              roundedCircle className={styles.avatarWidth} />
           </Col>
-          <Col>the content of the big column</Col>
+          <Col >
+            <div className={styles.rotherStile}>Whould you rather</div>
+            <Row noGutters >{optionOne.text}</Row>
+            <Row noGutters className="justify-content-md-center">
+              <Col xs lg="1">or</Col>
+            </Row>
+            <Row noGutters >{optionTwo.text}</Row>
+          </Col>
         </Row>
+        <Row />
       </Container>
+
     )
   }
 }
 
-function mapStateToProps({authedUser, users, questions}, {id}){
+function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id]
-  return{
+  return {
     authedUser,
     question: formatQuestion(question, users[question.author], authedUser)
   }
 }
 
-export default QuestionPreview;
+export default connect(mapStateToProps)(QuestionPreview)

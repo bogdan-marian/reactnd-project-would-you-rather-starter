@@ -8,7 +8,6 @@ class QuestionPreviewContainer extends Component {
     console.log(this.props);
     return (
       <div>
-        QuestionPreviewContainer
         {this.props.questionIds.map(id => (
           <QuestionPreview key={id} id={id}/>
         ))}

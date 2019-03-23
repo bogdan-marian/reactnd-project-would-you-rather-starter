@@ -1,7 +1,22 @@
 .questionWidth {
     max-width: 500px;
+    padding-bottom: 25px
 }
 
 .avatarWidth{
-    max-width: 150px;
+    max-width: 100px;
+}
+
+.nameStile{
+    font-size: 15px;
+    background-color: #fff9f9;
+}
+.rotherStile{
+    font-size:15;
+    font-weight: bold;
+    padding-top: 10px;
+}
+.smallPading{
+    padding-top: 0px;
+    padding-bottom: 0xp
 }
