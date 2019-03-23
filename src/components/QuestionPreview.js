@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Row, Col, Image, Container } from "react-bootstrap";
+import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import styles from "./Question.module.css";
 import { formatQuestion } from '../utils/helpers'
 var placeholder = require("../images/paceholder.svg");
@@ -32,6 +32,12 @@ class QuestionPreview extends Component {
               <Col xs lg="1">or</Col>
             </Row>
             <Row noGutters >{optionTwo.text}</Row>
+            <Row className="justify-content-md-center">
+              <Col></Col>
+              <Col>
+                <Button variant="outline-secondary">View Pool</Button>
+              </Col>
+            </Row>
           </Col>
         </Row>
         <Row />
