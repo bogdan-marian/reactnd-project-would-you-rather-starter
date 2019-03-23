@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import styles from "./Question.module.css";
 import { formatQuestion } from '../utils/helpers'
-var placeholder = require("../images/paceholder.svg");
 
 class QuestionPreview extends Component {
   render() {
