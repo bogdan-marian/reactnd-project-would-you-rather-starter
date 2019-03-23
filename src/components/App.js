@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import QuestionNavigation from "./QuestionNavigation";
 import QuestionPreviewContainer from "./QuestionPreviewContainer";
 import QuestionNavbar from "./QuestionNavbar";
-import "holderjs";
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
   componentDidMount() {
@@ -17,8 +17,9 @@ class App extends Component {
       <Container>
         <QuestionNavbar />
         <QuestionNavigation />
-
+        
         <div>
+          <LoadingBar />
           {this.props.loading === true ? null : <QuestionPreviewContainer />}
         </div>
       </Container>

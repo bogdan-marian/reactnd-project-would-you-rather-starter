@@ -21,3 +21,5 @@ https://medium.com/@zeolearn/6-best-reactjs-based-ui-frameworks-9c780b96236c
 - LoginScreen
 
 # gravatar generator
+# loading
+npm add react-redux-loading
