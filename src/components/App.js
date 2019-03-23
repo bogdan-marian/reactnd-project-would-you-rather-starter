@@ -9,6 +9,7 @@ import QuestionNavbar from "./QuestionNavbar";
 import LoadingBar from 'react-redux-loading'
 import QuestionPage from './QuestionPage'
 import Lader from './Lader'
+import NewQuestion from './NewQuestion'
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +21,6 @@ class App extends Component {
       <Router>
         <Container>
           <QuestionNavbar />
-          <QuestionNavigation />
 
           <div>
             <LoadingBar />
@@ -30,6 +30,7 @@ class App extends Component {
                 <Route path='/' exact component={QuestionPreviewContainer} />
                 <Route path='/question/:id' exact component={QuestionPage} />
                 <Route path='/lader' exact component={Lader} />
+                <Route path='/newQuestion' exact component={NewQuestion}/>
               </div>}
           </div>
         </Container>
