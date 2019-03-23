@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import {  Nav } from 'react-bootstrap'
+import { ButtonToolbar, Button } from 'react-bootstrap'
 
 class QuestionNavigation extends Component {
   render() {
     return (
-      <Nav className="justify-content-center">
-        <Nav.Item>
-          <Nav.Link >Active</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-      </Nav>
+      <div>
+        <br></br>
+        <ButtonToolbar className="justify-content-md-center">
+          <Button variant="outline-secondary">Unanswerd Questions</Button>
+          <Button variant="outline-secondary">Answered Questions</Button>
+        </ButtonToolbar>
+        <br></br>
+      </div>
     )
   }
 }
