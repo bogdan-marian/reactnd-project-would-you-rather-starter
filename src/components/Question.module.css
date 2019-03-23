@@ -20,3 +20,10 @@
     padding-top: 0px;
     padding-bottom: 0xp
 }
+.barLink{
+    color:	rgb(192, 191, 191);
+}
+
+a.barLink:hover{
+    color: #fff9f9
+}
