@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Container } from "react-bootstrap";
 import styles from "./Question.module.css";
-import {formatQuestion} from '../utils/helper'
+import {formatQuestion} from '../utils/helpers'
 var placeholder = require("../images/paceholder.svg");
 
 class QuestionPreview extends Component {
   render() {
+    console.log(this.props)
     return (
       <Container className={styles.questionWidth}>
         <Row>Name Sirname askes:</Row>

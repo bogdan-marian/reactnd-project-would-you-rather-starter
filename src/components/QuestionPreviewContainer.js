@@ -10,7 +10,7 @@ class QuestionPreviewContainer extends Component {
       <div>
         QuestionPreviewContainer
         {this.props.questionIds.map(id => (
-          <QuestionPreview key={id}/>
+          <QuestionPreview key={id} id={id}/>
         ))}
       </div>
     );
