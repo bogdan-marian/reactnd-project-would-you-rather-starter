@@ -24,3 +24,6 @@ https://medium.com/@zeolearn/6-best-reactjs-based-ui-frameworks-9c780b96236c
 # some other packeges loading
 npm add react-redux-loading
 npm install react-router-bootstrap --save
+# protect routs
+https://tylermcginnis.com/react-router-protected-routes-authentication/
+
