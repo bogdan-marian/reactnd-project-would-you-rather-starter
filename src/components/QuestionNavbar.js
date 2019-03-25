@@ -4,7 +4,12 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import styles from "./Question.module.css";
 
+class UserName extends Component{
+  
+}
+
 class QuestionNavbar extends Component {
+
   render() {
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
@@ -21,23 +26,25 @@ class QuestionNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <Nav.Link >login</Nav.Link>
+            <Nav.Link >
+              {typeof this.props.authedUserObject === 'undefined'
+                ? 'log in now'
+                : this.props.authedUserObject.name}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        {typeof this.props.authedUser === 'undefined'
-          ? ''
-          : console.log(this.props.authedUser.name)}
+        {typeof this.props.authedUserObject === 'undefined'
+          ? console.log("this is undefined")
+          : console.log("log user name: "+this.props.authedUserObject.name)}
       </Navbar>
     )
   }
 }
 
-
-
 function mapStateToProps({ questions , authedUser,users }) {
   return {
     questionIds: Object.keys(questions),
-    authedUser: users[authedUser],
+    authedUserObject: users[authedUser],
     users:users
   };
 }
