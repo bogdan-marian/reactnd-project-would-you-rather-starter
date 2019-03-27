@@ -5,20 +5,6 @@ import { Navbar, Nav, NavItem, Modal, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import styles from "./Question.module.css"
 import { fakeAuth } from '../utils/helpers'
-//import MyAuthButton from './MyAuthButton'
-
-
-
-
-const AuthButton = withRouter(({ history, authedUserObject }) => (
-  fakeAuth.isAuthenticated === true
-    ? <Nav.Link
-      onClick={() => {
-        fakeAuth.signout(() => history.push('/'))
-      }}>    welcome! {authedUserObject.name} <button >Sign Out</button>
-    </Nav.Link>
-    : <Nav.Link className={styles.barLink}>You are not logged in.</Nav.Link>
-))
 
 class QuestionNavbar extends Component {
   constructor(props) {
@@ -32,13 +18,8 @@ class QuestionNavbar extends Component {
 
     const { history } = this.props;
 
-    const logOutCloseModal = () => {
-      const that = this;
-      that.setState({ showModal: false });
-    }
-
-    const openModal = () => {
-      this.setState({ showModal: true });
+    const hideModal = () => {
+      this.setState({ showModal: false });
     }
 
     const logOut = () => {
@@ -70,15 +51,6 @@ class QuestionNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            {/* 
-            <Nav.Link >
-              {typeof this.props.authedUserObject === 'undefined'
-                ? 'log in now'
-                : this.props.authedUserObject.name}
-            </Nav.Link>
-            */ }
-
-
             <NavItem
               onClick={myAuthButonAction}
               className={styles.barLink}>
@@ -91,7 +63,7 @@ class QuestionNavbar extends Component {
 
 
 
-        <Modal show={this.state.showModal} onHide={logOutCloseModal}>
+        <Modal show={this.state.showModal} onHide={hideModal}>
           <Modal.Header closeButton>
             <Modal.Title>
               {typeof this.props.authedUserObject === 'undefined'
@@ -101,7 +73,7 @@ class QuestionNavbar extends Component {
           </Modal.Header>
           <Modal.Body>Would you like to log out? </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={logOutCloseModal}>
+            <Button variant="secondary" onClick={hideModal}>
               Cancel
             </Button>
             <Button variant="primary" onClick={logOut}>
