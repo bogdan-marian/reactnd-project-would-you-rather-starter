@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { 
-  BrowserRouter as Router, 
+import {
+  BrowserRouter as Router,
   Route,
-  Redirect } from 'react-router-dom'
+  Redirect
+} from 'react-router-dom'
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import { Container } from "react-bootstrap";
@@ -47,7 +48,7 @@ class App extends Component {
                 <Route path='/login' component={Login} />
                 <PrivateRoute path='/question/:id' exact component={QuestionPage} />
                 <PrivateRoute path='/lader' exact component={Lader} />
-                <PrivateRoute path='/newQuestion' exact component={NewQuestion}/>
+                <PrivateRoute path='/newQuestion' exact component={NewQuestion} />
               </div>}
           </div>
         </Container>
