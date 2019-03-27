@@ -13,18 +13,8 @@ import LoadingBar from 'react-redux-loading'
 import QuestionPage from './QuestionPage'
 import Lader from './Lader'
 import NewQuestion from './NewQuestion'
+import { fakeAuth } from '../utils/helpers'
 
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true
-    setTimeout(cb, 100) // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false
-    setTimeout(cb, 100) // fake async
-  }
-}
 
 class Login extends React.Component {
   state = {
@@ -86,10 +76,11 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                <Route path='/' exact component={QuestionPreviewContainer} />
-                <Route path='/question/:id' exact component={QuestionPage} />
-                <Route path='/lader' exact component={Lader} />
-                <Route path='/newQuestion' exact component={NewQuestion}/>
+                <PrivateRoute path='/' exact component={QuestionPreviewContainer} />
+                <Route path='/login' component={Login} />
+                <PrivateRoute path='/question/:id' exact component={QuestionPage} />
+                <PrivateRoute path='/lader' exact component={Lader} />
+                <PrivateRoute path='/newQuestion' exact component={NewQuestion}/>
               </div>}
           </div>
         </Container>
