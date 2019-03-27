@@ -27,3 +27,11 @@
 a.barLink:hover{
     color: #fff9f9
 }
+
+.brandLink{
+    color:white
+}
+
+a.brandLink:hover{
+    color: white
+}

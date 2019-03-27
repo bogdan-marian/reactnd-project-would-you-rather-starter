@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,7 +15,52 @@ import QuestionPage from './QuestionPage'
 import Lader from './Lader'
 import NewQuestion from './NewQuestion'
 import { fakeAuth } from '../utils/helpers'
-import Login from './Login'
+
+
+class Login extends React.Component {
+  state = {
+    redirectToRefferrer: false
+  }
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState(() => ({
+        redirectToRefferrer: true
+      }))
+    })
+  }
+
+  render() {
+    const { users } = this.props;
+
+
+    
+
+    var listUsers = Object.keys(users).map((key, obj) =>(
+      <li key={key}>Name: {obj}{key}{users.key}</li>
+    ))
+
+    const { redirectToRefferrer } = this.state
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+
+    if (redirectToRefferrer === true) {
+      return (
+        <Redirect to={from} />
+      )
+    }
+
+    return (
+      <div>
+        <p>You must log in to view this page at {from.pathname}</p>
+        <button onClick={this.login}>Log in </button>
+
+        <ul>
+          {listUsers}
+        </ul>
+      </div>
+    )
+
+  }
+}
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -27,6 +72,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       }} />
   )} />
 )
+
 
 class App extends Component {
   componentDidMount() {
@@ -45,7 +91,7 @@ class App extends Component {
               ? null
               : <div>
                 <PrivateRoute path='/' exact component={QuestionPreviewContainer} />
-                <Route path='/login' component={Login} />
+                <Route path='/login' component={(props) => <Login {...props} users={this.props.users} />} />
                 <PrivateRoute path='/question/:id' exact component={QuestionPage} />
                 <PrivateRoute path='/lader' exact component={Lader} />
                 <PrivateRoute path='/newQuestion' exact component={NewQuestion} />
@@ -58,9 +104,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    users: users
   };
 }
 

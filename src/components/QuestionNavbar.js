@@ -28,23 +28,32 @@ class QuestionNavbar extends Component {
     }
 
     const myAuthButonAction = () => {
-      if (fakeAuth.isAuthenticated){
+      if (fakeAuth.isAuthenticated) {
         this.setState({ showModal: true });
-      }else{
+      } else {
         fakeAuth.signout(() => history.push('/login'))
       }
+    }
+
+    const navigateHome = () => {
+      history.push('/')
     }
 
 
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
-        <Navbar.Brand >Would you rather</Navbar.Brand>
+        <Navbar.Brand ><Link to="/" className={styles.brandLink}>
+        Would you rather</Link></Navbar.Brand>
         <Nav className="mr-auto">
           <NavItem >
             <Link to="newQuestion" className={styles.barLink}>
               New Question</Link>
           </NavItem>
-          <NavItem href="#pricing" className={styles.barLink}>Leader Board</NavItem>
+          <NavItem>-</NavItem>
+          <NavItem >
+            <Link to="lader" className={styles.barLink}>
+              Leader Board</Link>
+          </NavItem>
         </Nav>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -60,8 +69,6 @@ class QuestionNavbar extends Component {
             </NavItem>
           </Nav>
         </Navbar.Collapse>
-
-
 
         <Modal show={this.state.showModal} onHide={hideModal}>
           <Modal.Header closeButton>
