@@ -65,7 +65,7 @@ class QuestionNavbar extends Component {
               className={styles.barLink}>
               {fakeAuth.isAuthenticated === true
                 ? this.props.authedUserObject.name
-                : "Log In"}
+                : "--- ---"}
             </NavItem>
           </Nav>
         </Navbar.Collapse>

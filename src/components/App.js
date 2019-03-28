@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import { Container } from "react-bootstrap";
-import QuestionNavigation from "./QuestionNavigation";
-import QuestionPreviewContainer from "./QuestionPreviewContainer";
+import {setAuthedUser} from "../actions/authedUser";
+import { Container,Dropdown, DropdownButton, Row } from "react-bootstrap";
+import NewQuestioncontainer from "./NewQuestionContainer";
 import QuestionNavbar from "./QuestionNavbar";
 import LoadingBar from "react-redux-loading";
 import QuestionPage from "./QuestionPage";
@@ -16,7 +16,8 @@ class Login extends React.Component {
   state = {
     redirectToRefferrer: false
   };
-  login = () => {
+  login = (key) => {
+    this.props.dispatch(setAuthedUser(key))
     fakeAuth.authenticate(() => {
       this.setState(() => ({
         redirectToRefferrer: true
@@ -27,9 +28,9 @@ class Login extends React.Component {
   render() {
     const { users } = this.props;
     var listUsers = Object.keys(users).map(key => (
-      <li key={key}>
-        <span>{users[key].name}</span>
-      </li>
+      
+        <Dropdown.Item onClick={() => this.login(key)}>{users[key].name}</Dropdown.Item>
+       
     ));
 
     const { redirectToRefferrer } = this.state;
@@ -40,12 +41,13 @@ class Login extends React.Component {
     }
 
     return (
-      <div>
-        <p>You must log in to view this page at {from.pathname}</p>
-        <button onClick={this.login}>Log in </button>
-
-        <ul>{listUsers}</ul>
-      </div>
+      <Container className="justify-content-md-center">
+        <Row className="justify-content-md-center">You must log in to view this page. Who wyould you like to impersonate?</Row>
+        <Row className="justify-content-md-center">
+        <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+          {listUsers}</DropdownButton>
+          </Row>
+      </Container>
     );
   }
 }
@@ -57,18 +59,20 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       fakeAuth.isAuthenticated === true ? (
         <Component {...props} />
       ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location }
-          }}
-        />
-      )
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
     }
   />
 );
 
 class App extends Component {
+
+
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
@@ -86,12 +90,14 @@ class App extends Component {
                 <PrivateRoute
                   path="/"
                   exact
-                  component={QuestionPreviewContainer}
+                  component={NewQuestioncontainer}
                 />
                 <Route
                   path="/login"
                   component={props => (
-                    <Login {...props} users={this.props.users} />
+                    <Login {...props}
+                      users={this.props.users}
+                      dispatch={this.props.dispatch} />
                   )}
                 />
                 <PrivateRoute

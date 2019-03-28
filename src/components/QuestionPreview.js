@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Row, Col, Image, Container, Button } from "react-bootstrap";
+import { Row, Col, Image, Container, Button, Tabs, Tab } from "react-bootstrap";
 import styles from "./Question.module.css";
 import { formatQuestion } from '../utils/helpers'
 
@@ -16,6 +16,7 @@ class QuestionPreview extends Component {
     return (
 
       <Container className={styles.questionWidth}>
+
         <Row />
         <Row className={styles.nameStile}>{name} askes:</Row>
         <Row className="justify-content-md-center">
