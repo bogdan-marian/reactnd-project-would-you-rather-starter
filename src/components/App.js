@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import {setAuthedUser} from "../actions/authedUser";
 import { Container,Dropdown, DropdownButton, Row } from "react-bootstrap";
-import NewQuestioncontainer from "./NewQuestionContainer";
+import Questioncontainer from "./QuestionContainer";
+import QuestionPage from './QuestionPage'
 import QuestionNavbar from "./QuestionNavbar";
 import LoadingBar from "react-redux-loading";
-import QuestionPage from "./QuestionPage";
 import Lader from "./Lader";
 import NewQuestion from "./NewQuestion";
 import { fakeAuth } from "../utils/helpers";
@@ -29,7 +29,7 @@ class Login extends React.Component {
     const { users } = this.props;
     var listUsers = Object.keys(users).map(key => (
       
-        <Dropdown.Item onClick={() => this.login(key)}>{users[key].name}</Dropdown.Item>
+        <Dropdown.Item key={key} onClick={() => this.login(key)}>{users[key].name}</Dropdown.Item>
        
     ));
 
@@ -90,7 +90,7 @@ class App extends Component {
                 <PrivateRoute
                   path="/"
                   exact
-                  component={NewQuestioncontainer}
+                  component={Questioncontainer}
                 />
                 <Route
                   path="/login"

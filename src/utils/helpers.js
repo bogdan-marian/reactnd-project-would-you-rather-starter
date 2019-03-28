@@ -1,4 +1,4 @@
-export function formatQuestion (question, author, authedUser) {
+export function formatQuestion (question, author) {
   const { id, optionOne, optionTwo, timestamp } = question
   const { name, avatarURL } = author
 
@@ -8,6 +8,7 @@ export function formatQuestion (question, author, authedUser) {
     timestamp,
     optionOne,
     optionTwo,
+    allVotes: optionOne.votes.concat(optionTwo.votes), 
     avatar: avatarURL,
   }
 }

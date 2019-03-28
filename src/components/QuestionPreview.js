@@ -47,11 +47,12 @@ class QuestionPreview extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps({ authedUser, users, questions }, { id, section }) {
   const question = questions[id]
   return {
     authedUser,
-    question: formatQuestion(question, users[question.author], authedUser)
+    question: formatQuestion(question, users[question.author], authedUser),
+    section: section
   }
 }
 
