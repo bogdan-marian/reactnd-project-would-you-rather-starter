@@ -11,28 +11,20 @@ class Questioncontainer extends Component {
 
     let questions = this.props.questions
     let authedUser = this.props.authedUser
-    let users = this.props.users
-    
+
     let unanswerdQuestions = []
     let answerdQuestions = []
-    const myNewQuestions = Object.keys(questions).filter(key => {
+    Object.keys(questions).filter(key => {
       const rawQuestion = questions[key]
-      const author = users[rawQuestion.author]
-      console.log(rawQuestion)
       const allVotes = rawQuestion.optionOne.votes.concat(rawQuestion.optionTwo.votes)
-      console.log(allVotes)
-      console.log("authed user: " + authedUser)
+
 
       if (allVotes.includes(authedUser)) {
         answerdQuestions.push(rawQuestion.id)
-        console.log('wee have a winner ')
       } else {
         unanswerdQuestions.push(rawQuestion.id)
       }
-
     })
-    console.log("Answerd: " + answerdQuestions)
-    console.log("Unanswerd: " + unanswerdQuestions)
 
     return (
       <Container className={styles.questionWidth}>
@@ -45,7 +37,9 @@ class Questioncontainer extends Component {
                 ))}
               </Tab>
               <Tab eventKey="Answerd" title="Answerd Questions">
-                Some other text
+                {unanswerdQuestions.map(qId => (
+                  <QuestionPreview key={qId} id={qId} />
+                ))}
               </Tab>
             </Tabs>
           </Col>

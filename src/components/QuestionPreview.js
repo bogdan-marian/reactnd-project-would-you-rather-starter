@@ -11,8 +11,6 @@ class QuestionPreview extends Component {
       return <p> This question doesn't exist</p>
     }
     const { name, id, avatar, optionOne, optionTwo } = question
-
-    console.log('avatar' + avatar)
     return (
 
       <Container className={styles.questionWidth}>
