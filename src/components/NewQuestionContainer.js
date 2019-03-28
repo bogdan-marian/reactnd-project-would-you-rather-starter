@@ -24,7 +24,6 @@ class NewQuestionContainer extends Component {
             </Tabs>
           </Col>
         </Row>
-
       </Container>
     );
   }
