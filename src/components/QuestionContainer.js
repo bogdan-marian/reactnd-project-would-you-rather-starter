@@ -32,12 +32,12 @@ class Questioncontainer extends Component {
           <Col>
             <Tabs defaultActiveKey="Unanswerd" id="uncontrolled-tab-example">
               <Tab eventKey="Unanswerd" title="Unanswerd Questions">
-                {answerdQuestions.map(qId => (
+                {unanswerdQuestions.map(qId => (
                   <QuestionPreview key={qId} id={qId} />
                 ))}
               </Tab>
               <Tab eventKey="Answerd" title="Answerd Questions">
-                {unanswerdQuestions.map(qId => (
+                {answerdQuestions.map(qId => (
                   <QuestionPreview key={qId} id={qId} />
                 ))}
               </Tab>

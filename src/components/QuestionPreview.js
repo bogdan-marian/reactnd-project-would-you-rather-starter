@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Row, Col, Image, Container, Button, Tabs, Tab } from "react-bootstrap";
 import styles from "./Question.module.css";
 import { formatQuestion } from '../utils/helpers'
+import { Link } from 'react-router-dom'
 
 class QuestionPreview extends Component {
   render() {
@@ -33,7 +34,7 @@ class QuestionPreview extends Component {
             <Row className="justify-content-md-center">
               <Col></Col>
               <Col>
-                <Button variant="outline-secondary">View Pool</Button>
+                <Link to={"/question/"+id}><Button variant="outline-secondary">  View Pool</Button></Link>
               </Col>
             </Row>
           </Col>
