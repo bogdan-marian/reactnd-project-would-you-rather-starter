@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Row, Col, Image, Container, Button, Tabs, Tab } from "react-bootstrap";
+import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import styles from "./Question.module.css";
 import { formatQuestion } from '../utils/helpers'
 import { Link } from 'react-router-dom'

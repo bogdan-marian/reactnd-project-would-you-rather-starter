@@ -1,6 +1,7 @@
 import React, {Component } from 'react'
 import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
+import AnswerQuestion from './AnswerQuestion';
 
 class QuestionPage extends Component{
   render(){
@@ -11,7 +12,6 @@ class QuestionPage extends Component{
     let rawQuestion = this.props.questions[id]
     let author = this.props.users[rawQuestion.author]
     let question = formatQuestion(rawQuestion, author)
-    console.log(question)
     
     if (question.allVotes.includes(userKey)){
       return (
@@ -19,7 +19,7 @@ class QuestionPage extends Component{
       )
     }else{
       return (
-        <p>{userKey} This is a new question</p>
+        <AnswerQuestion question={question}/>
       )
     }
 
