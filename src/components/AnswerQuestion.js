@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import {
   Row,
   Col,
@@ -22,26 +22,23 @@ class AnswerQuestion extends Component {
 
   updatedQuestion = undefined
   answer = undefined
-  goodToGo = false
-  authedUser
 
   constructor(props, context) {
     super(props, context);
   }
 
   setOptionOne() {
-    console.log("setOptionOne ")
-    console.log(this.updatedQuestion)
-    
     this.answer = 'optionOne'
-    console.log(this.answer)
+    this.goodToGo = true
+  }
+
+  setOptionTwo() {
+    this.answer = 'optionTwo'
     this.goodToGo = true
   }
 
   handleSubmit() {
     const{dispatch, authedUser} = this.props
-   
-    const updatedQuestion = this.updatedQuestion
     const answer = this.answer
     
     if (this.goodToGo){
@@ -49,11 +46,11 @@ class AnswerQuestion extends Component {
       console.log("good to go: " + this.goodToGo)
       dispatch(handleAnswerQuestion({
         authedUser,
-        qid: updatedQuestion.id,
+        qid: this.updatedQuestion.id,
         answer
       }))
     }
-    console.log("handleSubmit")
+    this.props.history.push(`/question/${this.updatedQuestion.id}`)
   }
 
   render() {
@@ -81,16 +78,17 @@ class AnswerQuestion extends Component {
 
                 <Form.Check
                   type="radio"
-                  label={question.optionOne.text}
+                  label={optionOne.text}
                   name="formHorizontalRadios"
                   id="formHorizontalRadios1"
                   onChange={()=>this.setOptionOne()}
                 />
                 <Form.Check
                   type="radio"
-                  label={question.optionTwo.text}
+                  label={optionTwo.text}
                   name="formHorizontalRadios"
                   id="formHorizontalRadios2"
+                  onChange={()=>this.setOptionTwo()}
                 />
                 <Row>
                   <Button variant="primary" onClick={() => this.handleSubmit()}>Submit</Button>
@@ -117,4 +115,4 @@ function mapStateToProps({ questions, authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(AnswerQuestion);
+export default withRouter(connect(mapStateToProps)(AnswerQuestion));

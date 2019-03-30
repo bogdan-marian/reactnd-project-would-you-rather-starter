@@ -22,7 +22,7 @@ function answerQuestion({ authedUser, qid, answer }) {
 }
 
 export function handleAnswerQuestion(info) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(answerQuestion(info))
 
         return saveQuestionAnswer(info)
