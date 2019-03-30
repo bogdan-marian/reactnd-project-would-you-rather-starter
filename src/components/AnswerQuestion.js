@@ -18,7 +18,7 @@ import {
 import styles from "./Question.module.css";
 import {handleAnswerQuestion} from '../actions/questions'
 
-class AnswerQuestion extends Component {
+class QuestionResults extends Component {
 
   updatedQuestion = undefined
   answer = undefined
@@ -115,4 +115,4 @@ function mapStateToProps({ questions, authedUser, users }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(AnswerQuestion));
+export default withRouter(connect(mapStateToProps)(QuestionResults));

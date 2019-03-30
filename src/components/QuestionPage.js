@@ -2,6 +2,7 @@ import React, {Component } from 'react'
 import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
 import AnswerQuestion from './AnswerQuestion';
+import QuestionResults from './QuestionResults'
 
 class QuestionPage extends Component{
   render(){
@@ -15,7 +16,7 @@ class QuestionPage extends Component{
     
     if (question.allVotes.includes(userKey)){
       return (
-        <p>{userKey} have answerd this question</p>
+        <QuestionResults question={question}/>
       )
     }else{
       return (
