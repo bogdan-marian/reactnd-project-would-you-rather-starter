@@ -17,8 +17,6 @@ function answerQuestion({ authedUser, qid, answer }) {
         qid,
         answer
     }
-
-
 }
 
 export function handleAnswerQuestion(info) {

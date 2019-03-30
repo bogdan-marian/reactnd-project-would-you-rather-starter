@@ -1,7 +1,8 @@
 export function formatQuestion (question, author) {
   const { id, optionOne, optionTwo, timestamp } = question
   const { name, avatarURL } = author
-
+  console.log('optionOne')
+  console.log(optionOne)
   return {
     name,
     id,
