@@ -46,12 +46,12 @@ class QuestionNavbar extends Component {
         Would you rather</Link></Navbar.Brand>
         <Nav className="mr-auto">
           <NavItem >
-            <Link to="newQuestion" className={styles.barLink}>
+            <Link to="/newQuestion" className={styles.barLink}>
               New Question</Link>
           </NavItem>
           <NavItem>-</NavItem>
           <NavItem >
-            <Link to="lader" className={styles.barLink}>
+            <Link to="/lader" className={styles.barLink}>
               Leader Board</Link>
           </NavItem>
         </Nav>
