@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   Row,
   Col,
@@ -16,45 +16,51 @@ import {
   Form
 } from "react-bootstrap";
 import styles from "./Question.module.css";
-
-class ToggleButtonGroupControlled extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      value: [1, 3]
-    };
-  }
-
-  handleChange(value, event) {
-    this.setState({ value });
-  }
-
-  render() {
-    return (
-      <div>
-        <Row>
-          <ToggleButtonGroup
-            type="checkbox"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <ToggleButton value={1}>Option 1</ToggleButton>
-            <ToggleButton value={2}>Option 2</ToggleButton>
-            <ToggleButton value={3}>Option 3</ToggleButton>
-          </ToggleButtonGroup>
-        </Row>
-      </div>
-    );
-  }
-}
+import {handleAnswerQuestion} from '../actions/questions'
 
 class AnswerQuestion extends Component {
+
+  updatedQuestion = undefined
+  answer = undefined
+  goodToGo = false
+  authedUser
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  setOptionOne() {
+    console.log("setOptionOne ")
+    console.log(this.updatedQuestion)
+    
+    this.answer = 'optionOne'
+    console.log(this.answer)
+    this.goodToGo = true
+  }
+
+  handleSubmit() {
+    const{dispatch, authedUser} = this.props
+   
+    const updatedQuestion = this.updatedQuestion
+    const answer = this.answer
+    
+    if (this.goodToGo){
+
+      console.log("good to go: " + this.goodToGo)
+      dispatch(handleAnswerQuestion({
+        authedUser,
+        qid: updatedQuestion.id,
+        answer
+      }))
+    }
+    console.log("handleSubmit")
+  }
+
   render() {
-    const { question } = this.props;
+    const { question , questions } = this.props;
     const { name, id, avatar, optionOne, optionTwo } = question;
+    this.updatedQuestion = questions[id];
+    
     return (
       <Container className={styles.questionWidth}>
         <Card>
@@ -78,6 +84,7 @@ class AnswerQuestion extends Component {
                   label={question.optionOne.text}
                   name="formHorizontalRadios"
                   id="formHorizontalRadios1"
+                  onChange={()=>this.setOptionOne()}
                 />
                 <Form.Check
                   type="radio"
@@ -86,7 +93,10 @@ class AnswerQuestion extends Component {
                   id="formHorizontalRadios2"
                 />
                 <Row>
-                  <Button variant="primary">Submit</Button>
+                  <Button variant="primary" onClick={() => this.handleSubmit()}>Submit</Button>
+                </Row>
+                <Row>
+
                 </Row>
               </Col>
             </Row>
@@ -97,6 +107,14 @@ class AnswerQuestion extends Component {
   }
 }
 
-map;
+function mapStateToProps({ questions, authedUser, users }) {
+  return {
+    questionIds: Object.keys(questions),
+    authedUserObject: users[authedUser],
+    users: users,
+    authedUser: authedUser,
+    questions: questions
+  };
+}
 
-export default AnswerQuestion;
+export default connect(mapStateToProps)(AnswerQuestion);
