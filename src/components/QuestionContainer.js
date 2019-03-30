@@ -28,17 +28,24 @@ class Questioncontainer extends Component {
 
     return (
       <Container className={styles.questionWidth}>
+        <p></p>
         <Row>
           <Col>
             <Tabs defaultActiveKey="Unanswerd" id="uncontrolled-tab-example">
               <Tab eventKey="Unanswerd" title="Unanswerd Questions">
                 {unanswerdQuestions.map(qId => (
-                  <QuestionPreview key={qId} id={qId} />
+                  <>
+                    <p></p>
+                    <QuestionPreview key={qId} id={qId} />
+                  </>
                 ))}
               </Tab>
               <Tab eventKey="Answerd" title="Answerd Questions">
                 {answerdQuestions.map(qId => (
-                  <QuestionPreview key={qId} id={qId} />
+                  <>
+                    <p></p>
+                    <QuestionPreview key={qId} id={qId} />
+                  </>
                 ))}
               </Tab>
             </Tabs>

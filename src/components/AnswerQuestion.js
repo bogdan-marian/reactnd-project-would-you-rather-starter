@@ -60,6 +60,7 @@ class QuestionResults extends Component {
     
     return (
       <Container className={styles.questionWidth}>
+        <p></p>
         <Card>
           <Card.Header>{name} askes:</Card.Header>
           <Card.Body>
