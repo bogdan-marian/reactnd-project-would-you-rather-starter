@@ -33,12 +33,10 @@ export function handleAnswerQuestion(info) {
     }
 }
 
-function addQuestion(optionOneText, optionTwoText, author) {
+function addQuestion(question) {
     return {
         type: ADD_QUESTION,
-        optionOneText,
-        optionTwoText,
-        author
+        question
     }
 }
 

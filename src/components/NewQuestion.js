@@ -44,10 +44,10 @@ class NewQuestion extends Component {
     const { contentOne, contentTwo } = this.state
     const { dispatch } = this.props
 
-    dispatch(handleAddQuestion({
-      optionOneText: contentOne,
-      optionTwoText: contentTwo
-    }))
+    dispatch(handleAddQuestion(
+      contentOne,
+      contentTwo
+    ))
 
     this.setState(() => ({
       contentOne: '',
