@@ -23,11 +23,6 @@ class QuestionPage extends Component{
         <AnswerQuestion question={question}/>
       )
     }
-
-    console.log( question)
-    return (
-      <div>react-question-page</div>
-    )
   }
 }
 

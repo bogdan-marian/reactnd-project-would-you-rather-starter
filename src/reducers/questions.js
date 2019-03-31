@@ -1,6 +1,7 @@
 import {
   RECEIVE_QUESTIONS,
-  ANSWER_QUESTION
+  ANSWER_QUESTION,
+  ADD_QUESTION
 } from '../actions/questions'
 
 export default function questions(state = {}, action) {
@@ -11,7 +12,6 @@ export default function questions(state = {}, action) {
         ...action.questions
       }
     case ANSWER_QUESTION:
-
       return {
         ...state,
         [action.qid]: {
@@ -22,13 +22,22 @@ export default function questions(state = {}, action) {
               ? state[action.qid].optionOne.votes.concat([action.authedUser])
               : state[action.qid].optionOne.votes.filter((uid) => uid !== action.authedUser)
           },
-          optionTwo:{
+          optionTwo: {
             ...state[action.qid].optionTwo,
             votes: action.answer === 'optionTwo'
               ? state[action.qid].optionTwo.votes.concat([action.authedUser])
               : state[action.qid].optionTwo.votes.filter((uid) => uid !== action.authedUser)
           }
         }
+      }
+    case ADD_QUESTION:
+      const {question} = action
+      console.log("Debug line")
+      console.log(action)
+      console.log(question)
+      return {
+        ...state,
+        [action.question.id]: action.question
       }
     default:
       return state

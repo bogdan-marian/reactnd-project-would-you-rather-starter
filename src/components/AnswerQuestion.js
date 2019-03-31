@@ -42,8 +42,6 @@ class QuestionResults extends Component {
     const answer = this.answer
     
     if (this.goodToGo){
-
-      console.log("good to go: " + this.goodToGo)
       dispatch(handleAnswerQuestion({
         authedUser,
         qid: this.updatedQuestion.id,
