@@ -7,6 +7,21 @@ import formatQuestion from '../utils/helpers'
 
 
 class Questioncontainer extends Component {
+  constructor(props){
+    super(props)
+    this.inverseByTime = this.inverseByTime.bind(this);
+  }
+
+  inverseByTime(a, b) {
+    let timeA = this.props.questions[a].timestamp
+    let timeB = this.props.questions[b].timestamp
+    if (timeA > timeB)
+      return -1;
+    if (timeA < timeB)
+      return 1;
+    return 0;
+  }
+
   render() {
 
     let questions = this.props.questions
@@ -25,6 +40,9 @@ class Questioncontainer extends Component {
         unanswerdQuestions.push(rawQuestion.id)
       }
     })
+
+    unanswerdQuestions.sort(this.inverseByTime)
+    answerdQuestions.sort(this.inverseByTime)
 
     return (
       <Container className={styles.questionWidth}>
