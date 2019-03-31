@@ -23,21 +23,6 @@ class ViewResults extends Component {
   render() {
     const { question, authedUser } = this.props;
 
-    const badgeOne = question.optionOne.votes.includes(authedUser)
-      ? <Badge variant='secondary'>Your vote </Badge>
-      : <span></span>
-    const badgeTwo = question.optionTwo.votes.includes(authedUser)
-      ? <Badge>Your vote </Badge>
-      : <span></span>
-
-    const votesOne = question.optionOne.votes.length
-    const votesTwo = question.optionTwo.votes.length
-    const all = votesOne + votesTwo
-
-    const percentOne = Math.floor(votesOne / all * 100)
-    const percentTwo = Math.floor(votesTwo / all * 100)
-    const now = 60;
-
     return (
       <Container className={styles.questionWidth}>
         <p></p>

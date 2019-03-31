@@ -35,7 +35,7 @@ class OptionResult extends Component {
         <Card.Body>
           <Row>{badge}</Row>
           <Row>
-            Would you rather be {question.optionOne.text}
+            Would you rather {option.text}
           </Row>
           <Row className="justify-content-md-center">
             <Col>{progressInstance}</Col>

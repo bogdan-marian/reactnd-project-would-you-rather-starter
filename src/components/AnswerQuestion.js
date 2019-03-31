@@ -72,9 +72,6 @@ class QuestionResults extends Component {
               </Col>
               <Col xs={8}>
                 <Card.Title>Would You Rather ... </Card.Title>
-
-                <Row noGutters>{optionOne.text}</Row>
-
                 <Form.Check
                   type="radio"
                   label={optionOne.text}
