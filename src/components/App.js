@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, 
+  Route, 
+  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import {setAuthedUser} from "../actions/authedUser";

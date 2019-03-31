@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
 import AnswerQuestion from './AnswerQuestion';
 import QuestionResults from './QuestionResults'
+import NoMatch from './NoMatch';
 
 class QuestionPage extends Component{
   render(){
@@ -11,6 +12,13 @@ class QuestionPage extends Component{
     
     let id = this.props.match.params.id
     let rawQuestion = this.props.questions[id]
+    console.log("my question id")
+    console.log(rawQuestion)
+    if (typeof  rawQuestion === "undefined"){
+      return (
+        <NoMatch />
+      )
+    }
     let author = this.props.users[rawQuestion.author]
     let question = formatQuestion(rawQuestion, author)
     
