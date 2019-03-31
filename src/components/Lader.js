@@ -10,6 +10,7 @@ class Lader extends Component {
     this.myMap = new Map()
     this.answerdMap = new Map()
     this.createdMap = new Map()
+    this.avatarMap = new Map()
     this.orderUsers = this.orderUsers.bind(this)
   }
 
@@ -28,7 +29,7 @@ class Lader extends Component {
 
   render() {
     const { users, questions } = this.props
-    const { myMap, answerdMap, createdMap } = this
+    const { myMap, answerdMap, createdMap , avatarMap} = this
     let userKeys = Object.keys(users)
     let qKeys = Object.keys(questions)
 
@@ -43,6 +44,9 @@ class Lader extends Component {
       }
       if (!createdMap.has(userKey)) {
         createdMap.set(userKey, 0)
+      }
+      if (!avatarMap.has(userKey)){
+        avatarMap.set(userKey, users[userKey].avatarURL)
       }
 
       for (var q = 0; q < qKeys.length; q++) {
@@ -68,7 +72,8 @@ class Lader extends Component {
         }
       }
     }
-
+    console.log("avatar map")
+    console.log(avatarMap)
     userKeys.sort(this.orderUsers)
 
     this.rank = new Map()
@@ -89,7 +94,8 @@ class Lader extends Component {
               rank={key}
               score={myMap.get(item)}
               answerd={answerdMap.get(item)}
-              created={createdMap.get(item)} />
+              created={createdMap.get(item)}
+              avatar={avatarMap.get(item)} />
           ))
         }
       </Container>
