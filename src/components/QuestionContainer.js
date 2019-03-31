@@ -7,7 +7,7 @@ import formatQuestion from '../utils/helpers'
 
 
 class Questioncontainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.inverseByTime = this.inverseByTime.bind(this);
   }
@@ -77,5 +77,4 @@ function mapStateToProps({ questions, users, authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(Questioncontainer
-);
+export default connect(mapStateToProps)(Questioncontainer);
