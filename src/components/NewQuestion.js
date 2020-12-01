@@ -4,20 +4,13 @@ import { Redirect, withRouter } from "react-router-dom";
 import {
   Row,
   Col,
-  Image,
   Container,
-  Badge,
   Button,
   Card,
-  ButtonGroup,
-  ToggleButton,
-  ToggleButtonGroup,
-  ButtonToolbar,
   Form
 } from 'react-bootstrap'
 import styles from "./Question.module.css"
-import OptionResult from './OptionResult'
-import {handleAddQuestion} from '../actions/questions'
+import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
   state = {
@@ -83,12 +76,12 @@ class NewQuestion extends Component {
                     type="text"
                     placeholder="Option one"
                     onChange={this.handleContentTwo} />
-                  <Button 
-                    variant="primary" 
+                  <Button
+                    variant="primary"
                     className="float-right"
                     disabled={this.state.contentOne === '' || this.state.contentTwo === ''}
-                    onClick={()=>this.handleSubmit()}>
-                     Submit
+                    onClick={() => this.handleSubmit()}>
+                    Submit
                   </Button>
                 </Form>
               </Card.Body>
@@ -101,7 +94,7 @@ class NewQuestion extends Component {
 }
 
 function mapStateToProps({ }) {
-  return { 
+  return {
 
   }
 }

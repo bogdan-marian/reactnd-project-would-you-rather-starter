@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import LaderItem from './LaderItem'
-import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import styles from "./Question.module.css";
 
 class Lader extends Component {

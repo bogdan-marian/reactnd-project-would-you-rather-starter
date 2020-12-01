@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import {
   Row,
   Col,
   Image,
   Container,
-  Badge,
-  Button,
   Card,
-  ButtonGroup,
-  ToggleButton,
-  ToggleButtonGroup,
-  ButtonToolbar,
-  Form
 } from 'react-bootstrap'
 import styles from "./Question.module.css"
 import OptionResult from './OptionResult'

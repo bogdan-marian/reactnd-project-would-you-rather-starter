@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
 import {
-  Jumbotron,
   ProgressBar,
   Row,
   Col,
-  Image,
-  Container,
   Badge,
-  Button,
   Card,
-  ButtonGroup,
-  ToggleButton,
-  ToggleButtonGroup,
-  ButtonToolbar,
-  Form
 } from 'react-bootstrap'
 
 class OptionResult extends Component {

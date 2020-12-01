@@ -7,7 +7,6 @@ import NoMatch from './NoMatch';
 
 class QuestionPage extends Component{
   render(){
-    let authedUser = this.props.users[this.props.authedUser]
     let userKey = this.props.authedUser
     
     let id = this.props.match.params.id

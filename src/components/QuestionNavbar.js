@@ -35,10 +35,6 @@ class QuestionNavbar extends Component {
       }
     }
 
-    const navigateHome = () => {
-      history.push('/')
-    }
-
 
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >

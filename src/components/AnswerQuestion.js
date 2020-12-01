@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import {
   Row,
   Col,
@@ -9,23 +8,17 @@ import {
   Container,
   Button,
   Card,
-  ButtonGroup,
-  ToggleButton,
-  ToggleButtonGroup,
-  ButtonToolbar,
   Form
 } from "react-bootstrap";
 import styles from "./Question.module.css";
-import {handleAnswerQuestion} from '../actions/questions'
+import { handleAnswerQuestion } from '../actions/questions'
 
 class QuestionResults extends Component {
 
   updatedQuestion = undefined
   answer = undefined
 
-  constructor(props, context) {
-    super(props, context);
-  }
+  
 
   setOptionOne() {
     this.answer = 'optionOne'
@@ -38,10 +31,10 @@ class QuestionResults extends Component {
   }
 
   handleSubmit() {
-    const{dispatch, authedUser} = this.props
+    const { dispatch, authedUser } = this.props
     const answer = this.answer
-    
-    if (this.goodToGo){
+
+    if (this.goodToGo) {
       dispatch(handleAnswerQuestion({
         authedUser,
         qid: this.updatedQuestion.id,
@@ -52,10 +45,10 @@ class QuestionResults extends Component {
   }
 
   render() {
-    const { question , questions } = this.props;
+    const { question, questions } = this.props;
     const { name, id, avatar, optionOne, optionTwo } = question;
     this.updatedQuestion = questions[id];
-    
+
     return (
       <Container className={styles.questionWidth}>
         <p></p>
@@ -77,14 +70,14 @@ class QuestionResults extends Component {
                   label={optionOne.text}
                   name="formHorizontalRadios"
                   id="formHorizontalRadios1"
-                  onChange={()=>this.setOptionOne()}
+                  onChange={() => this.setOptionOne()}
                 />
                 <Form.Check
                   type="radio"
                   label={optionTwo.text}
                   name="formHorizontalRadios"
                   id="formHorizontalRadios2"
-                  onChange={()=>this.setOptionTwo()}
+                  onChange={() => this.setOptionTwo()}
                 />
                 <Row>
                   <Button variant="primary" onClick={() => this.handleSubmit()}>Submit</Button>

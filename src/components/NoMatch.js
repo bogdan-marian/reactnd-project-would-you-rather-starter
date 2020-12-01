@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {Card, Row, Col, Image, Container, Button } from "react-bootstrap";
+import {Card, Row, Col,  Container } from "react-bootstrap";
 import styles from "./Question.module.css";
 
 class NoMatch extends Component {

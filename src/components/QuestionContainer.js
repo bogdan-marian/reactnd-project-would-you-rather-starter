@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import QuestionPreview from "./QuestionPreview";
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 import styles from "./Question.module.css";
-import formatQuestion from '../utils/helpers'
 
 
 class Questioncontainer extends Component {
@@ -29,7 +28,7 @@ class Questioncontainer extends Component {
 
     let unanswerdQuestions = []
     let answerdQuestions = []
-    Object.keys(questions).filter(key => {
+    Object.keys(questions).forEach(key => {
       const rawQuestion = questions[key]
       const allVotes = rawQuestion.optionOne.votes.concat(rawQuestion.optionTwo.votes)
 
